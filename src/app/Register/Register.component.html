@@ -1,0 +1,64 @@
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-lg-8">
+        <div class="card card-registration">
+          <div class="row g-0">
+            <div class="col-xl-5">
+              <img src="assets/ImageMohamed/register.png" alt="Sample photo" class="img-fluid rounded-start">
+            </div>
+            <div class="col-xl-7">
+              <div class="card-body p-4 p-md-5 text-black">
+                <h3 class="mb-4 text-uppercase">Sign up</h3>
+                <form>
+                  <div class="row mb-3">
+                    <div class="col-md-6 mb-3">
+                      <input type="text" id="firstName" class="form-control form-control-lg" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <input type="text" id="lastName" class="form-control form-control-lg" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name" required>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6 mb-3">
+                      <input type="text" id="phoneNumber" class="form-control form-control-lg" [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <input type="email" id="email" class="form-control form-control-lg" [(ngModel)]="user.email" name="email" placeholder="Email" required>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6 mb-3">
+                      <input type="password" id="password" class="form-control form-control-lg" [(ngModel)]="user.password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <input type="date" id="birthday" class="form-control form-control-lg" [(ngModel)]="user.birthday" name="birthday" placeholder="Birthday" required>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6 mb-3">
+                      <select class="form-select form-select-lg" name="accountType" required>
+                        <option value="" disabled selected>Account Type</option>
+                        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                    <button type="reset" class="btn btn-light btn-lg me-2">Reset</button>
+                    <button (click)="register()" class="btn btn-warning btn-lg">Submit</button>
+                  </div>
+                </form>
+
+                <p class="mt-4 mb-0">Already have an account? <a routerLink="/login" class="link-info">Sign in here</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

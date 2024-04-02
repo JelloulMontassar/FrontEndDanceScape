@@ -1,0 +1,55 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: auto;
+  padding: 150px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-label {
+  font-size: 2.2em; /* Increase the font size */
+}
+
+.mat-input-element {
+  font-size: 2.2em; /* Increase the font size */
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 1.2em; /* Increase the font size */
+  padding: 10px; /* Increase the padding */
+}
+.optionbox {
+  position: relative;
+  width: 100%;
+}
+
+.optionbox mat-form-field {
+  width: 100%;
+}
+
+.optionbox mat-select {
+  background: #828080;
+  color: #fff;
+  padding: 10px;
+  height: 50px;
+  border: none;
+  font-size: 20px;
+  outline: none;
+}
+
+/* Override default mat-select arrow color */
+.optionbox .mat-select-arrow {
+  color: #fff;
+}
+
