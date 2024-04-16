@@ -1,0 +1,40 @@
+<div class="messenger-container">
+  <h2>Private Chat</h2>
+
+  <div class="container">
+    <div class="online-users">
+      <h3>Online Users</h3>
+      <div *ngFor="let user of onlineUsers" class="user">
+        <button (click)="selectUser(user)" [ngClass]="{'selected': user === selectedUser}">
+          <span>{{ user }}</span>
+          <span class="status"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="chat-section">
+      <div class="card">
+        <div class="card-body message-container">
+          <div *ngIf="selectedUser">
+            <h3>Chatting with {{ selectedUser }}</h3>
+            <div *ngFor="let msg of getMessagesForSelectedUser()" class="message" [ngClass]="{'sent': msg.senderName === userProfile.email, 'received': msg.senderName !== userProfile.email}">
+              <div class="meta-data">
+                <div class="sender">{{ msg.senderName }}</div>
+                <div class="timestamp">{{ msg.date | date: 'short' }}</div>
+              </div>
+              <div class="content">{{ msg.message }}</div>
+            </div>
+          </div>
+          <div *ngIf="!selectedUser">
+            <p>Select a user to start chatting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input type="text" [(ngModel)]="newMessage" placeholder="Type your message" (keyup.enter)="sendMessage()" />
+        <button (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

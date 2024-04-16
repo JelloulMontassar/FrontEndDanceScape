@@ -40,11 +40,18 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProfileComponent } from './profile/profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CommonModule } from '@angular/common';
-
 import { ToastrModule } from 'ngx-toastr';
 import {DataTablesModule} from "angular-datatables";
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ConfirmforgotpasswordComponent } from './confirmforgotpassword/confirmforgotpassword.component';
+import {AjouterPostComponent} from "./Front/ajouter-post/ajouter-post.component";
+import {ForumpostComponent} from "./Front/forumpost/forumpost.component";
+import {UpdatePostComponent} from "./Front/update-post/update-post.component";
+import {ChatComponent} from "./chat-component/chat-component.component";
+import { PrivateChatComponent } from './private-chat/private-chat.component';
+import { ReclamationListComponent } from './reclamation-list/reclamation-list.component';
+import { CreateReclamationComponent } from './create-reclamation/create-reclamation.component';
+import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
 
 
 
@@ -74,11 +81,20 @@ import { ConfirmforgotpasswordComponent } from './confirmforgotpassword/confirmf
     RoleToStringPipe,
     LoginComponent,
     DatepickerConfigComponent,
-
+    AjouterPostComponent,
+    ForumpostComponent,
+    UpdateReclamationComponent,
+    UpdatePostComponent,
+    ChatComponent,
+    PrivateChatComponent,
     ProfileComponent,
     LogoutComponent,
     ForgotpasswordComponent,
     ConfirmforgotpasswordComponent,
+    PrivateChatComponent,
+    ReclamationListComponent,
+    CreateReclamationComponent,
+    UpdateReclamationComponent,
 
   ],
   imports: [

@@ -25,7 +25,7 @@ export class LoginComponent {
     const helper = new JwtHelperService();
 
     if (storedToken && !helper.isTokenExpired(storedToken)) {
-      this.router.navigate(["/DanceScape/profile"], {
+      this.router.navigate(["/login"], {
         relativeTo: this.route,
         replaceUrl: true
       }).then(() => {
@@ -57,7 +57,7 @@ export class LoginComponent {
         if (response.role === 'ADMIN') {
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/DanceScape/shows']);
+          this.router.navigate(['/DanceScape/profile']);
         }
       },
       (error) => {

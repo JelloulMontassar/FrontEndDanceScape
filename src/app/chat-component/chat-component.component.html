@@ -1,0 +1,18 @@
+<div class="messenger-container">
+  <h2>Public Chat</h2>
+  <div class="card">
+    <div class="card-body message-container">
+      <div *ngFor="let msg of messages" class="message" [ngClass]="{'sent': msg.senderName === userProfile.firstName, 'received': msg.senderName !== userProfile.firstName}">
+        <div class="meta-data">
+          <div class="sender">{{ msg.senderName }}</div>
+          <div class="timestamp">{{ msg.date | date: 'short' }}</div>
+        </div>
+        <div class="content">{{ msg.message }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="SentMessage.message" placeholder="Type your message" (keyup.enter)="sendMessage(SentMessage.message)" />
+    <button (click)="sendMessage(SentMessage.message)">Send</button>
+  </div>
+</div>

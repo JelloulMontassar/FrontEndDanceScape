@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { User, Role } from '../models/User.model';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import {Component} from '@angular/core';
+import {UserService} from '../services/user.service';
+import {Role, User} from '../models/User.model';
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-Register',
   templateUrl: './Register.component.html',
   styleUrls: ['./Register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent  {
   user: User = {
     enabled: false,
     userId: null,
@@ -27,9 +27,24 @@ export class RegisterComponent implements OnInit {
   registrationSuccess = false;
   roles: Role[] = Object.values(Role);
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,
+  private router: Router,private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const storedToken = localStorage.getItem('token');
+    const helper = new JwtHelperService();
+
+    if (storedToken && !helper.isTokenExpired(storedToken)) {
+      this.router.navigate(["/DanceScape/profile"], {
+        relativeTo: this.route,
+        replaceUrl: true
+      }).then(() => {
+        console.log('Navigation completed.');
+      }).catch(err => {
+        console.error('Navigation error:', err);
+      });
+    }
+  }
 
   register(): void {
     if (!this.user.birthday) {

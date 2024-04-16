@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-primary shadow">
+        <div class="card-header bg-primary text-white">
+          <h2 class="card-title mb-0">Add Post</h2>
+        </div>
+        <div class="card-body">
+
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Title</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="post.title" [ngModelOptions]="{standalone: true}" placeholder="Enter your title">
+            </div>
+
+            <div class="form-group">
+              <label for="postContent">Post Content</label>
+              <textarea class="form-control" id="postContent" rows="5" [(ngModel)]="post.postContent" [ngModelOptions]="{standalone: true}" placeholder="Write your post content here"></textarea>
+            </div>
+
+            <div class="form-group text-center">
+              <input type="file" class="form-control-file" id="imageUpload" (change)="onImageSelected($event)" accept="image/*">
+              <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" class="img-thumbnail mt-2 image-preview d-block mx-auto">
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary mr-2" (click)="ajouterPost()" [disabled]="user.ban == 1">Ajouter</button>
+              <button type="button" class="btn btn-secondary" (click)="buttonRetour()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

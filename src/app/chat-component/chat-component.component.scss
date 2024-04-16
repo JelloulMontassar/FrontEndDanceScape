@@ -1,0 +1,80 @@
+.messenger-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.message-container {
+  padding: 10px;
+}
+
+.message {
+  background-color: #e9eaed;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+
+
+.meta-data {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+.timestamp {
+  color: #666;
+}
+
+.content {
+  word-wrap: break-word;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.sent {
+  align-self: self-end;
+  background-color: #DCF8C6;
+}
+
+.received {
+  align-self: self-start;
+  background-color: #E5E7E9;
+}

@@ -9,6 +9,7 @@ import { ProfileDto } from '../models/profile-dto.model';
 })
 export class ProfileService {
   private baseUrl = 'http://localhost:8088/profile';
+  private baseUrl1 = 'http://localhost:8088/user';
   private token = localStorage.getItem("token");
 
   constructor(private http: HttpClient) {}
@@ -27,6 +28,10 @@ export class ProfileService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
     return this.http.put<any>(`${this.baseUrl}/updateProfile`,Profile, { headers });
+  }
+
+  getOnlineUsers() {
+    return this.http.get<any>(`${this.baseUrl1}/onlineUsers`);
   }
 }
 

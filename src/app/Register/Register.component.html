@@ -40,9 +40,9 @@
 
                   <div class="row mb-3">
                     <div class="col-md-6 mb-3">
-                      <select class="form-select form-select-lg" name="accountType" required>
+                      <select class="form-select form-select-lg" name="accountType" required [(ngModel)]="user.role">
                         <option value="" disabled selected>Account Type</option>
-                        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                        <option *ngFor="let role of roles" [value]="role" >{{ role }}</option>
                       </select>
                     </div>
                   </div>

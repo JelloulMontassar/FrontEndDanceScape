@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Reclamation Date</th>
+          <th scope="col">User</th>
+          <th scope="col">Status</th>
+          <th scope="col">Result</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let reclamation of reclamations; let i = index" >
+          <td>{{ reclamation.id }}</td>
+          <td>{{ reclamation.reclamationDate }}</td>
+          <td>{{ reclamation.user?.email }}</td>
+          <td>
+  <span class="badge"
+        [class.text-bg-danger]="reclamation.status === 'Urgent'"
+        [class.text-bg-warning]="reclamation.status === 'Not Urgent'">
+    {{ reclamation.status.toUpperCase() }}
+  </span>
+          </td>
+          <td><span class="badge"
+                    [class.text-bg-success]="reclamation.result === 'resolved'"
+                    [class.text-bg-warning]="reclamation.result === 'Not resolved'">
+    {{ reclamation.result.toUpperCase() }}
+  </span></td>
+
+          <td>
+
+            <button type="button" class="btn btn-success" (click)="openReclamation(reclamation.id)">
+              <i class="far fa-eye"></i> Open
+            </button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -16,10 +16,11 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService,private toastr: ToastrService, private sanitizer: DomSanitizer) {
   }
 
-  ngOnInit(): void {
-    this.profileService.getUserProfile().subscribe(
+  async ngOnInit(): Promise<void> {
+    await this.profileService.getUserProfile().subscribe(
       (profile: any) => {
         this.userProfile = profile;
+        localStorage.setItem("idUser", profile.id)
 
       },
       (error: any) => {

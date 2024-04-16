@@ -1,0 +1,115 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="input-group mb-3" >
+        <input type="text" class="form-control" placeholder="Write a mot..." [(ngModel)]="mot">
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" (click)="recherche()">Recherche</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container profile" *ngFor="let i of listforum">
+  <div class="card">
+    <div class="card-body d-flex align-items-center">
+      <a href="#">
+        <img src="data:image/png;base64,{{i.postCreator.profileImage}}" alt="" width="40" class="rounded-circle">
+      </a>
+      <div class="flex-fill ps-2">
+        <div class="fw-bold">{{ i.postCreator.firstName }} {{ i.postCreator.lastName }}</div>
+        <div class="small">{{ i.postDate | date }}</div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" [id]="'dropdownMenuButton' + i.postId" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+        <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton' + i.postId">
+          <li><a class="dropdown-item"  (click)="buttonUpdate(i.postId)"><i class="fa-solid fa-pen"></i> Edit</a></li>
+          <li><a class="dropdown-item"  (click)="deletePost(i.postId)"><i class="fa-solid fa-trash"></i> Delete</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="post-content">
+      <h2>{{ i.title }}</h2>
+      <p style="font-size: 19px; margin: 0%;">{{ i.postContent }}</p>
+      <div class="position-relative d-flex align-items-center">
+        <img style="margin-left: 40% ; margin-right: 50%;" src="{{ i.imageUrl }}" width="200" height="150">
+      </div>
+    </div>
+    <div class="post-actions">
+      <button (click)="likePost(i.postId)">{{i.reacts.length}} <i class="far fa-thumbs-up"></i> Like</button>
+      <button><i class="fas fa-share"></i> Share</button>
+    </div>
+    <br>
+    <div class="comment" *ngFor="let comment of i.comments ; let idx = index" >
+      <div class="comment-header">
+        <a href="#">
+          <img src="data:image/png;base64,{{comment.user.profileImage}}" alt="">
+        </a>
+        <div class="comment-info">
+          <div class="comment-user">{{ comment.user.firstName }} {{ comment.user.lastName }}</div>
+          <div class="comment-date">{{ comment.commentDate | date }}</div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+            <li><a class="dropdown-item" (click)="toggleEditMode(comment);startEditingComment(comment.commentId, comment.content)" ><i class="fa-solid fa-pen"></i> Edit</a></li>
+            <li><a class="dropdown-item" (click)="deleteComment(comment.commentId)"><i class="fa-solid fa-trash"></i> Delete</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-content" *ngIf="!comment.editMode">
+        {{ comment.content }}
+      </div>
+      <div *ngIf="comment.editMode" class="reply-input">
+        <input type="text" [(ngModel)]="updateComment.content" placeholder="Edit your comment...">
+        <div *ngIf="comment.editMode" class="post-actions">
+          <button (click)="saveEditedComment()">Save</button>
+          <button (click)="cancelEdit(comment)">Cancel</button>
+        </div>
+      </div>
+<br>
+      <div class="comment-actions">
+        <button><i class="far fa-thumbs-up"></i> Like</button>
+        <button (click)="toggleCommentInput(idx)"><i class="far fa-comment" ></i> Reply</button>
+      </div>
+      <div class="reply-input" *ngIf="isCommentInputVisible(idx)">
+        <input type="text" placeholder="Write a reply..." [(ngModel)]="souscomment.content">
+        <button (click)="addSousComment(comment.commentId)" [disabled]="souscomment.content.trim() === ''">
+          Reply
+        </button>
+      </div>
+      <br>
+      <div *ngFor="let sous of comment.sousComments" class="sous-comment mb-3">
+        <div class="d-flex align-items-start">
+          <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="avatar rounded-circle me-3" />
+          <div class="flex-grow-1">
+            <div class="content">
+              <p>{{ sous.content }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="comment-form">
+      <input type="text" placeholder="Write a comment..."   [(ngModel)]="comment.content" >
+      <button  (click)="addComment(i.postId)"
+              [disabled]="comment.content.trim() === ''">Comment</button>
+    </div>
+
+  </div>
+</div>

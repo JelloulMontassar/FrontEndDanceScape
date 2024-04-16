@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> <!-- Adjust the column size as needed -->
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Create Reclamation</h2>
+          <form class="reclamation-form" (ngSubmit)="submitReclamation()">
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea class="form-control" [(ngModel)]="reclamation.description" name="description" id="description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="status">Status:</label>
+              <select class="form-control" [(ngModel)]="reclamation.status" name="status" id="status" [required]="true">
+                <option value="" disabled selected>Reclamation Type</option>
+                <option value="Urgent" >Urgent</option>
+                <option value="Not Urgent">Not Urgent</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

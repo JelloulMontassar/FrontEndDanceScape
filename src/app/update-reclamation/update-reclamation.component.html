@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h3 class="text-center">Reclamation Details</h3>
+        </div>
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <img src="data:image/png;base64,{{reclamation.userId.profileImage}}" class="img-fluid profile-image" width="70">
+            <div class="ml-3">
+              <h5 class="name">{{ reclamation.userId.firstName }} {{ reclamation.userId.lastName }}</h5>
+              <p class="mail">{{ reclamation.userId.email }}</p>
+            </div>
+          </div>
+          <div class="form-group text-right">
+
+            <span class="badge badge-pill"
+                  [class.bg-success]="reclamation.result === 'resolved'"
+                  [class.bg-warning]="reclamation.result === 'Not resolved'">
+              Result: {{ reclamation.result?.toUpperCase() }}
+            </span>
+          </div>
+          <div class="form-group text-right">
+
+            <span class="badge badge-pill"
+                  [class.bg-success]="reclamation.status === 'Not Urgent'"
+                  [class.bg-danger]="reclamation.status === 'Urgent'">
+              Status: {{ reclamation.status.toUpperCase() }}
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="reclamationDate">Reclamation Date:</label>
+            <input [disabled]="true" type="date" class="form-control" id="reclamationDate" [(ngModel)]="reclamation.reclamationDate" name="reclamationDate">
+          </div>
+          <div class="form-group">
+            <label for="description">Reclamation Description:</label>
+            <textarea [disabled]="true" class="form-control" id="description" [(ngModel)]="reclamation.description" name="description"></textarea>
+          </div>
+
+          <div class="text-center">
+            <div class="btn-group mr-2" >
+              <button class="btn btn-success" (click)="resolveReclamation(reclamation.id)"><i class="fa fa-check"></i>  Resolved</button>
+            </div>
+            <div class="btn-group" >
+              <button  class="btn btn-danger" (click)="closeReclamation()"><i class="fa fa-times"></i> Close</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

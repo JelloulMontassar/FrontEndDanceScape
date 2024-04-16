@@ -1,33 +1,49 @@
-    <!-- header section start -->
-    <div class="header_section">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="logo"><a href="index.html"><img src="/assets/Front-office/images/logo.png"></a></div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/DanceScape/home">HOME</a>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/DanceScape/shows">SHOWS</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/DanceScape/contact">CONTACT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/DanceScape/profile">Account</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <div class="search_icon"><a href="#"><img src="/assets/Front-office/images/search-icon.png"></a></div>
-          </form>
-        </div>
-      </nav>
+<!-- header section start -->
+<div class="header_section">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="logo"><a href="index.html"><img src="/assets/Front-office/images/logo.png"></a></div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/DanceScape/home">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/DanceScape/shows">SHOWS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/DanceScape/reclamations/new">Reclamation</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" type="button" [id]="'dropdownMenuButton'" data-bs-toggle="dropdown" aria-expanded="false">
+            Posts
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/DanceScape/posts">All Posts</a>
+            <a class="dropdown-item" href="/DanceScape/ajouterPost">Add Post</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/DanceScape/profile">Account</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" type="button" [id]="'dropdownMenuButton'" data-bs-toggle="dropdown" aria-expanded="false">
+            Chat
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/DanceScape/chatRoom">Public Chat</a>
+            <a class="dropdown-item" href="/DanceScape/PrivateChatRoom">Private Chat</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <div class="search_icon"><a href="#"><img src="/assets/Front-office/images/search-icon.png"></a></div>
+      </form>
     </div>
-    <!-- header section end -->
+  </nav>
+</div>

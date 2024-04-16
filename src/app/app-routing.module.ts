@@ -17,12 +17,26 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import {ProfileComponent} from "./profile/profile.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {ConfirmforgotpasswordComponent} from "./confirmforgotpassword/confirmforgotpassword.component";
+import {ForumpostComponent} from "./Front/forumpost/forumpost.component";
+import {AjouterPostComponent} from "./Front/ajouter-post/ajouter-post.component";
+import {UpdatePostComponent} from "./Front/update-post/update-post.component";
+import {ChatComponent} from "./chat-component/chat-component.component";
+import {PrivateChatComponent} from "./private-chat/private-chat.component";
+import {ReclamationListComponent} from "./reclamation-list/reclamation-list.component";
+import {CreateReclamationComponent} from "./create-reclamation/create-reclamation.component";
+import {UpdateReclamationComponent} from "./update-reclamation/update-reclamation.component";
 
 const routes: Routes = [
   { path:'DanceScape', component:AllTemplateComponent,
   children:[
+    { path: 'reclamations/new', component: CreateReclamationComponent },
     {path:'home', component: BannerComponent},
     {path:'trainings', component: TrainingsComponent},
+    {path:'posts', component:ForumpostComponent},
+    {path:'chatRoom', component:ChatComponent},
+    {path:'PrivateChatRoom', component:PrivateChatComponent},
+    {path:'ajouterPost', component:AjouterPostComponent},
+    {path:'updatePost/:id', component:UpdatePostComponent},
 
     {path: 'class', component:ClassComponent},
     {path: 'shows', component: ShowsComponent},
@@ -36,9 +50,12 @@ const routes: Routes = [
 children:[
   {path:'body', component:AdminHomeComponent},
   {path:'list-users',component:ListUserComponent},
+  { path: 'reclamations', component: ReclamationListComponent },
+  {path:'reclamation/:id', component:UpdateReclamationComponent},
   {path:'update-user/:userId',component:UserDetailsComponent}
 ]
 },
+
   { path: 'logout', component: LogoutComponent },
   { path: 'login', component: LoginComponent },
   {path:'Register',component:RegisterComponent},
