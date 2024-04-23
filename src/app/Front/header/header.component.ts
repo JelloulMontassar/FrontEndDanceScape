@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {AuthService} from "../../services/auth.service";
+import {WebSocketService} from "../../services/WebSocketService";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
-  constructor(private authService: AuthService,private router: Router,private route: ActivatedRoute) {
+  profileId : string;
+  notifications: any ;
+
+  constructor(private toastr: ToastrService,private webSocketService: WebSocketService,private authService: AuthService,private router: Router,private route: ActivatedRoute) {
+    this.profileId = localStorage.getItem("idUser") as string;
   }
   ngOnInit(): void {
     const storedToken = localStorage.getItem('token');
@@ -21,10 +26,20 @@ export class HeaderComponent implements OnInit{
     } else {
       this.logout();
     }
+    this.webSocketService.connect2(this.profileId)
+    this.webSocketService.getUserNotifications().subscribe((message: any) => {
+      this.notifications=message;
+      console.log(message);
+      this.toastr.info(this.notifications.message+" On "+this.notifications?.sendDate, this.notifications.status);
+
+
+    });
   }
 
   async logout() {
-    this.authService.logout();
+    this.authService.logout().subscribe(response =>
+      console.log(response)
+    )
     this.router.navigate(["/login"], {
       relativeTo: this.route,
       replaceUrl: true

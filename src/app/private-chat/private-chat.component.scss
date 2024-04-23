@@ -136,3 +136,31 @@ button:hover {
   align-self: self-start;
   background-color: #E5E7E9;
 }
+.friend-request-btn {
+  background-color: #4CAF50; /* Green color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 50%; /* Circular shape */
+  padding: 5px; /* Smaller padding */
+  margin-right: 5px; /* Space to the right of the button */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 12px; /* Smaller font size */
+  line-height: 1; /* Line height */
+  height: 24px; /* Button height */
+  width: 24px; /* Button width */
+}
+.button-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* Optional: Add a gap between the buttons */
+}
+
+.friend-request-btn,
+button {
+  margin-right: 5px;
+}
+
+.friend-request-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+

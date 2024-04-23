@@ -13,7 +13,7 @@ export class LogoutComponent {
   }
 
   async logout() {
-    this.authService.logout();
+    this.authService.logout().subscribe();
     localStorage.clear();
     this.router.navigate(["/login"], {
       relativeTo: this.route,

@@ -32,11 +32,12 @@
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link dropdown-toggle" type="button" [id]="'alertsDropdown'" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
-        <span class="badge badge-danger badge-counter" id="notificationCounter" style="font-size: 0.9rem; ">{{ notificationCounter }}</span>
+        <span class="badge badge-danger badge-counter" id="notificationCounter" style="font-size: 0.9rem;">{{ notificationCounter }}</span>
       </a>
 
       <!-- Dropdown - Notifications -->
-      <div class="dropdown-list dropdown-menu dropdown-menu-right dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
+      <div class="dropdown-list dropdown-menu dropdown-menu-right dropdown-menu-end shadow animated--grow-in"
+           aria-labelledby="alertsDropdown" style="max-height: 300px; overflow-y: auto;">
         <h6 class="dropdown-header">
           Notifications
         </h6>
@@ -57,10 +58,11 @@
         </ng-container>
 
         <ng-template #noNotifications>
-          <a class="dropdown-item text-center small text-gray-500" >No new notifications</a>
+          <a class="dropdown-item text-center small text-gray-500">No new notifications</a>
         </ng-template>
       </div>
     </li>
+
     <!-- Logout Button -->
     <li class="nav-item">
       <a class="nav-link" href="/logout" data-toggle="modal" data-target="#logoutModal">

@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="header">Pending Friend Requests</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let request of pendingRequests">
+      <div class="card request-card mb-3">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <img
+              src="data:image/png;base64,{{request.sender.profileImage}}"
+              alt="Profile Image"
+              class="img-fluid rounded-circle"
+              style="width: 100px; height: 100px; margin-right: 15px;"
+            >
+            <div>
+              <p><strong>From:</strong> {{ request.sender.firstName }} {{ request.sender.lastName }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-end">
+          <button class="btn btn-success accept-btn" (click)="acceptRequest(request.receiver.userId,request.sender.userId)">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

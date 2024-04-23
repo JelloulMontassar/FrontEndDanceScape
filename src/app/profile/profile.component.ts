@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { ToastrService } from 'ngx-toastr';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -13,20 +14,22 @@ export class ProfileComponent implements OnInit {
   selectedFile: File | null = null;
 
 
-  constructor(private profileService: ProfileService,private toastr: ToastrService, private sanitizer: DomSanitizer) {
+  constructor(private route: ActivatedRoute,private profileService: ProfileService,private toastr: ToastrService, private sanitizer: DomSanitizer) {
   }
 
-  async ngOnInit(): Promise<void> {
-    await this.profileService.getUserProfile().subscribe(
+   ngOnInit() {
+
+    this.profileService.getUserProfile().subscribe(
       (profile: any) => {
         this.userProfile = profile;
-        localStorage.setItem("idUser", profile.id)
+        localStorage.setItem("idUser", profile.id);
 
       },
       (error: any) => {
         console.error('Error fetching user profile:', error);
       }
     );
+
   }
 
   onImageSelected(event: any) {

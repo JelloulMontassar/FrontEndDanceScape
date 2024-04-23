@@ -9,6 +9,8 @@ import {BehaviorSubject, Subject} from "rxjs";
 export class WebSocketService {
   private stompClient:any;
   private notificationsSubject:Subject<any> = new Subject<any>();
+  private notificationsSubject2:Subject<any> = new Subject<any>();
+
   private messageSubject: Subject<any> = new Subject<any>();
 
   constructor() { }
@@ -24,9 +26,24 @@ export class WebSocketService {
 
     });
   }
+  connect2(userId : string) {
+    const socket = new SockJS('//localhost:8088/ws');
+    this.stompClient = Stomp.over(socket);
+    this.stompClient.connect({}, () => {
+      this.stompClient.subscribe(`/topic/notifications/${userId}`, (message: any) => {
+        this.notificationsSubject2.next(JSON.parse(message.body));
+
+      });
+
+
+    });
+  }
 
   getNotifications() {
     return this.notificationsSubject.asObservable();
+  }
+  getUserNotifications() {
+    return this.notificationsSubject2.asObservable();
   }
   initializeWebSocketConnection() {
     const socket = new SockJS('//localhost:8088/ws');

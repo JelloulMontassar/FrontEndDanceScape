@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResetPasswordResponse,ResetPasswordRequest} from "../models/reset.model";
 import {AuthenticationRequest, AuthenticationResponse} from "../models/auth.model";
@@ -9,6 +9,7 @@ import {CResetPasswordRequest, CResetPasswordResponse} from "../models/cReset.mo
   providedIn: 'root'
 })
 export class AuthService {
+  private token = localStorage.getItem("token");
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +29,8 @@ export class AuthService {
     return this.http.get<any>('http://localhost:8080/user/auth'); // Replace '/api/user/data' with your backend endpoint to fetch user data
   }
   logout() {
-    return this.http.post('http://localhost:8088/user/logout', {});
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    return this.http.get('http://localhost:8088/user/logout', { headers });
   }
 }

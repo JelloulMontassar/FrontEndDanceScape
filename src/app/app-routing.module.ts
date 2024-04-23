@@ -25,6 +25,8 @@ import {PrivateChatComponent} from "./private-chat/private-chat.component";
 import {ReclamationListComponent} from "./reclamation-list/reclamation-list.component";
 import {CreateReclamationComponent} from "./create-reclamation/create-reclamation.component";
 import {UpdateReclamationComponent} from "./update-reclamation/update-reclamation.component";
+import {PendingFriendRequestsComponent} from "./pending-friend-requests/pending-friend-requests.component";
+import {MyReclamationListComponent} from "./my-reclamation-list/my-reclamation-list.component";
 
 const routes: Routes = [
   { path:'DanceScape', component:AllTemplateComponent,
@@ -37,6 +39,8 @@ const routes: Routes = [
     {path:'PrivateChatRoom', component:PrivateChatComponent},
     {path:'ajouterPost', component:AjouterPostComponent},
     {path:'updatePost/:id', component:UpdatePostComponent},
+    {path:'friendRequests', component:PendingFriendRequestsComponent},
+    {path:'reclamations/MyReclamations', component:MyReclamationListComponent},
 
     {path: 'class', component:ClassComponent},
     {path: 'shows', component: ShowsComponent},

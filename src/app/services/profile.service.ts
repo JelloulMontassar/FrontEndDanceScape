@@ -15,6 +15,7 @@ export class ProfileService {
   constructor(private http: HttpClient) {}
 
   getUserProfile(): Observable<ProfileDto> {
+    console.log(this.token)
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
     return this.http.get<ProfileDto>(`${this.baseUrl}/getProfile`, { headers });

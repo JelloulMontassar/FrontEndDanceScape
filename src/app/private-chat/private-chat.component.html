@@ -5,11 +5,16 @@
     <div class="online-users">
       <h3>Online Users</h3>
       <div *ngFor="let user of onlineUsers" class="user">
-        <button (click)="selectUser(user)" [ngClass]="{'selected': user === selectedUser}">
-          <span>{{ user }}</span>
-          <span class="status"></span>
-        </button>
+        <div class="button-container">
+          <button (click)="selectUser(user)" [ngClass]="{'selected': user === selectedUser}">
+            <span>{{ user }}</span>
+            <span class="status"></span>
+          </button>
+          <button (click)="sendFriendRequest(user)" class="friend-request-btn" *ngIf="!friendsEmails.includes(user)">+</button>
+
+        </div>
       </div>
+
     </div>
 
     <div class="chat-section">
@@ -17,7 +22,7 @@
         <div class="card-body message-container">
           <div *ngIf="selectedUser">
             <h3>Chatting with {{ selectedUser }}</h3>
-            <div *ngFor="let msg of getMessagesForSelectedUser()" class="message" [ngClass]="{'sent': msg.senderName === userProfile.email, 'received': msg.senderName !== userProfile.email}">
+            <div *ngFor="let msg of displayMessages()" class="message" [ngClass]="{'sent': msg.senderName === userProfile.email, 'received': msg.senderName !== userProfile.email}">
               <div class="meta-data">
                 <div class="sender">{{ msg.senderName }}</div>
                 <div class="timestamp">{{ msg.date | date: 'short' }}</div>

@@ -52,6 +52,8 @@ import { PrivateChatComponent } from './private-chat/private-chat.component';
 import { ReclamationListComponent } from './reclamation-list/reclamation-list.component';
 import { CreateReclamationComponent } from './create-reclamation/create-reclamation.component';
 import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
+import { PendingFriendRequestsComponent } from './pending-friend-requests/pending-friend-requests.component';
+import { MyReclamationListComponent } from './my-reclamation-list/my-reclamation-list.component';
 
 
 
@@ -83,6 +85,8 @@ import { UpdateReclamationComponent } from './update-reclamation/update-reclamat
     DatepickerConfigComponent,
     AjouterPostComponent,
     ForumpostComponent,
+    MyReclamationListComponent,
+    PendingFriendRequestsComponent,
     UpdateReclamationComponent,
     UpdatePostComponent,
     ChatComponent,
@@ -95,6 +99,8 @@ import { UpdateReclamationComponent } from './update-reclamation/update-reclamat
     ReclamationListComponent,
     CreateReclamationComponent,
     UpdateReclamationComponent,
+    PendingFriendRequestsComponent,
+    MyReclamationListComponent,
 
   ],
   imports: [
